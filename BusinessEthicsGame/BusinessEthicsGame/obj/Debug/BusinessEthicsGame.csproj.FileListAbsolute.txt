@@ -8,3 +8,13 @@ C:\Users\Au5\Desktop\BusinessEthicsGame\BusinessEthicsGame\BusinessEthicsGame\ob
 C:\Users\Au5\Desktop\BusinessEthicsGame\BusinessEthicsGame\BusinessEthicsGame\obj\Debug\BusinessEthicsGame.exe
 C:\Users\Au5\Desktop\BusinessEthicsGame\BusinessEthicsGame\BusinessEthicsGame\obj\Debug\BusinessEthicsGame.pdb
 C:\Users\Au5\Desktop\BusinessEthicsGame\BusinessEthicsGame\BusinessEthicsGame\obj\Debug\BusinessEthicsGame.Game.resources
+C:\Users\Austin\Desktop\Programming\BusinessEthicsGame\BusinessEthicsGame\BusinessEthicsGame\bin\Debug\BusinessEthicsGame.exe.config
+C:\Users\Austin\Desktop\Programming\BusinessEthicsGame\BusinessEthicsGame\BusinessEthicsGame\bin\Debug\BusinessEthicsGame.exe
+C:\Users\Austin\Desktop\Programming\BusinessEthicsGame\BusinessEthicsGame\BusinessEthicsGame\bin\Debug\BusinessEthicsGame.pdb
+C:\Users\Austin\Desktop\Programming\BusinessEthicsGame\BusinessEthicsGame\BusinessEthicsGame\obj\Debug\BusinessEthicsGame.csprojAssemblyReference.cache
+C:\Users\Austin\Desktop\Programming\BusinessEthicsGame\BusinessEthicsGame\BusinessEthicsGame\obj\Debug\BusinessEthicsGame.Game.resources
+C:\Users\Austin\Desktop\Programming\BusinessEthicsGame\BusinessEthicsGame\BusinessEthicsGame\obj\Debug\BusinessEthicsGame.Properties.Resources.resources
+C:\Users\Austin\Desktop\Programming\BusinessEthicsGame\BusinessEthicsGame\BusinessEthicsGame\obj\Debug\BusinessEthicsGame.csproj.GenerateResource.cache
+C:\Users\Austin\Desktop\Programming\BusinessEthicsGame\BusinessEthicsGame\BusinessEthicsGame\obj\Debug\BusinessEthicsGame.csproj.CoreCompileInputs.cache
+C:\Users\Austin\Desktop\Programming\BusinessEthicsGame\BusinessEthicsGame\BusinessEthicsGame\obj\Debug\BusinessEthicsGame.exe
+C:\Users\Austin\Desktop\Programming\BusinessEthicsGame\BusinessEthicsGame\BusinessEthicsGame\obj\Debug\BusinessEthicsGame.pdb

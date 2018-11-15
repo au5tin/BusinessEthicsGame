@@ -14,6 +14,7 @@ namespace BusinessEthicsGame
     public partial class Game : Form
     {
         public NPC[] npcs;
+        public Keys direction = Keys.D;
 
         public Game()
         {
@@ -24,13 +25,16 @@ namespace BusinessEthicsGame
 
         private void Game_Load(object sender, EventArgs e)
         {
+            /*
             timer1.Tick += Timer1_Tick;
             timer1.Start();
             Random rand = new Random();
+            
             npcs = Enumerable.Range(0, 5).Select(n =>
                 new NPC(rand, ClientRectangle.Width, ClientRectangle.Height)).ToArray();
             foreach (var n in npcs)
                 Controls.Add(n.image);
+            */
         }
 
         private void Timer1_Tick(object sender, EventArgs e)
@@ -38,6 +42,64 @@ namespace BusinessEthicsGame
             foreach(var n in npcs)
             {
                 n.update();
+            }
+        }
+
+        private void onKeyReleased(object sender, KeyEventArgs e)
+        {
+            player.Image = Properties.Resources._default;
+            direction = Keys.Sleep; //Ramdom Key
+        }
+
+        private void onKeyPressed(object sender, KeyEventArgs e)
+        {
+            if (direction != e.KeyCode)
+            {
+                switch (e.KeyCode)
+                {
+                    case Keys.W:
+                        player.Top -= 10;
+                        Game.ActiveForm.Update();
+                        player.Image = Properties.Resources.walking_backward;
+                        break;
+                    case Keys.A:
+                        player.Left -= 10;
+                        Game.ActiveForm.Update();
+                        player.Image = Properties.Resources.walking_left;
+                        break;
+                    case Keys.S:
+                        player.Top += 10;
+                        Game.ActiveForm.Update();
+                        player.Image = Properties.Resources.walking_forward;
+                        break;
+                    case Keys.D:
+                        player.Left += 10;
+                        Game.ActiveForm.Update();
+                        player.Image = Properties.Resources.walking_right;
+                        break;
+                }
+                direction = e.KeyCode;
+            }
+            else
+            {
+                switch (e.KeyCode)
+                {
+                    case Keys.W:
+                        player.Top -= 10;
+                        break;
+                    case Keys.A:
+                        player.Left -= 10;
+                        Game.ActiveForm.Update();
+                        break;
+                    case Keys.S:
+                        player.Top += 10;
+                        Game.ActiveForm.Update();
+                        break;
+                    case Keys.D:
+                        player.Left += 10;
+                        Game.ActiveForm.Update();
+                        break;
+                }
             }
         }
     }

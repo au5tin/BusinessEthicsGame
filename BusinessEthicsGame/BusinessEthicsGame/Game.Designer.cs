@@ -29,38 +29,52 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.character1 = new System.Windows.Forms.PictureBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Game));
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.character1)).BeginInit();
+            this.player = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.player)).BeginInit();
             this.SuspendLayout();
             // 
-            // character1
+            // player
             // 
-            this.character1.Image = global::BusinessEthicsGame.Properties.Resources.White_square;
-            this.character1.Location = new System.Drawing.Point(200, 200);
-            this.character1.Name = "character1";
-            this.character1.Size = new System.Drawing.Size(50, 50);
-            this.character1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.character1.TabIndex = 0;
-            this.character1.TabStop = false;
+            this.player.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.player.BackColor = System.Drawing.Color.Transparent;
+            this.player.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.player.Image = ((System.Drawing.Image)(resources.GetObject("player.Image")));
+            this.player.InitialImage = null;
+            this.player.Location = new System.Drawing.Point(578, 282);
+            this.player.Name = "player";
+            this.player.Size = new System.Drawing.Size(85, 115);
+            this.player.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.player.TabIndex = 0;
+            this.player.TabStop = false;
             // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(784, 462);
-            this.Controls.Add(this.character1);
+            this.BackColor = System.Drawing.Color.GreenYellow;
+            this.BackgroundImage = global::BusinessEthicsGame.Properties.Resources.grass;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.ClientSize = new System.Drawing.Size(705, 458);
+            this.Controls.Add(this.player);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Game";
-            this.Text = "Game";
-            ((System.ComponentModel.ISupportInitialize)(this.character1)).EndInit();
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+            this.Text = "Ethical Dilemma";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.onKeyPressed);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.onKeyReleased);
+            ((System.ComponentModel.ISupportInitialize)(this.player)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.PictureBox character1;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.PictureBox player;
     }
 }
