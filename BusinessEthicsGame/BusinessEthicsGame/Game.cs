@@ -15,6 +15,7 @@ namespace BusinessEthicsGame
     {
         public NPC[] npcs = new NPC[4];
         public Keys direction = Keys.Sleep;
+        public Random rand = new Random();
 
         public Game()
         {
@@ -170,28 +171,29 @@ namespace BusinessEthicsGame
 
         public void askQuestion(NPC npc)
         {
-            posedQuestion.Text = String.Format(npc.questions[0].Item1, npc.name);
+            int r = rand.Next(0, 2);
+            posedQuestion.Text = String.Format(npc.questions[r].Item1, npc.name);
         }
     }
 
     public class NPC
     {
         public Tuple<String, int>[] questions = {
-            new Tuple<String, int>("{0} is walking by a pond and notices", 0),
+            new Tuple<String, int>("{0} is walking by a pond and notices a child drowing", 0),
+            new Tuple<String, int>("{0} was talking to Lynda and noticed something strange", 0)
             //new Tuple<String, int>("", 0),
             //new Tuple<String, int>("", 0),
             //new Tuple<String, int>("", 0),
-            //new Tuple<String, int>("", 0),
-            //new Tuple<String, int>("", 0)};
+            //new Tuple<String, int>("", 0)
         };
 
         public Tuple<String, String, String>[] answers = {
-            new Tuple<String, String, String>("", "", ""),
-            new Tuple<String, String, String>("", "", ""),
-            new Tuple<String, String, String>("", "", ""),
-            new Tuple<String, String, String>("", "", ""),
-            new Tuple<String, String, String>("", "", ""),
-            new Tuple<String, String, String>("", "", "")};
+            new Tuple<String, String, String>("Save", "Call", "Ignore"),
+            new Tuple<String, String, String>("Really?", "How?", "Yeet") };
+            //new Tuple<String, String, String>("", "", ""),
+            //new Tuple<String, String, String>("", "", ""),
+            //new Tuple<String, String, String>("", "", ""),
+            //new Tuple<String, String, String>("", "", "")};
 
         public PictureBox image;
         public String name;
