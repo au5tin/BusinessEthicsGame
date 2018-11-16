@@ -18,3 +18,4 @@ C:\Users\Austin\Desktop\Programming\BusinessEthicsGame\BusinessEthicsGame\Busine
 C:\Users\Austin\Desktop\Programming\BusinessEthicsGame\BusinessEthicsGame\BusinessEthicsGame\obj\Debug\BusinessEthicsGame.csproj.CoreCompileInputs.cache
 C:\Users\Austin\Desktop\Programming\BusinessEthicsGame\BusinessEthicsGame\BusinessEthicsGame\obj\Debug\BusinessEthicsGame.exe
 C:\Users\Austin\Desktop\Programming\BusinessEthicsGame\BusinessEthicsGame\BusinessEthicsGame\obj\Debug\BusinessEthicsGame.pdb
+C:\Users\Austin\Desktop\Programming\BusinessEthicsGame\BusinessEthicsGame\BusinessEthicsGame\obj\Debug\BusinessEthicsGame.helpForm.resources

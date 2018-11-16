@@ -13,8 +13,8 @@ namespace BusinessEthicsGame
     
     public partial class Game : Form
     {
-        public NPC[] npcs;
-        public Keys direction = Keys.D;
+        public NPC[] npcs = new NPC[4];
+        public Keys direction = Keys.Sleep;
 
         public Game()
         {
@@ -25,57 +25,84 @@ namespace BusinessEthicsGame
 
         private void Game_Load(object sender, EventArgs e)
         {
-            /*
-            timer1.Tick += Timer1_Tick;
-            timer1.Start();
-            Random rand = new Random();
-            
-            npcs = Enumerable.Range(0, 5).Select(n =>
-                new NPC(rand, ClientRectangle.Width, ClientRectangle.Height)).ToArray();
+            npcs[0] = new NPC(Properties.Resources.idle1, 10, 10, "Keith");
+            npcs[1] = new NPC(Properties.Resources.idle2, 700, 10, "Sally");
+            npcs[2] = new NPC(Properties.Resources.idle3, 10, 520, "David");
+            npcs[3] = new NPC(Properties.Resources.idle4, 700, 510, "Brian");
             foreach (var n in npcs)
-                Controls.Add(n.image);
-            */
-        }
-
-        private void Timer1_Tick(object sender, EventArgs e)
-        {
-            foreach(var n in npcs)
             {
-                n.update();
+                n.image.SizeMode = PictureBoxSizeMode.AutoSize;
+                n.image.BackColor = Color.Transparent;
+                Controls.Add(n.image);
             }
         }
 
         private void onKeyReleased(object sender, KeyEventArgs e)
         {
-            player.Image = Properties.Resources._default;
-            direction = Keys.Sleep; //Ramdom Key
+            player.Image = Properties.Resources.standing;
+            direction = Keys.Sleep; //Random Key
         }
 
         private void onKeyPressed(object sender, KeyEventArgs e)
         {
-            if (direction != e.KeyCode)
+            //Escape for Help
+            if (e.KeyCode == Keys.Escape)
+            {
+                helpForm popup = new helpForm();
+                popup.Show();
+            }
+            //E for Interaction
+            else if (e.KeyCode == Keys.E && getNPC() != null)
+            {
+                askQuestion(getNPC());
+            }
+            else if (direction != e.KeyCode)
             {
                 switch (e.KeyCode)
                 {
                     case Keys.W:
-                        player.Top -= 10;
-                        Game.ActiveForm.Update();
                         player.Image = Properties.Resources.walking_backward;
+                        //NW Character from bottom
+                        if (player.Top - 10 <= 140 && player.Left <= 75)
+                            break;
+                        //NE Character from bottom
+                        if (player.Top - 10 <= 165 && player.Left >= 600)
+                            break;
+                        if (player.Top - 10 >= 0)
+                            player.Top -= 10;
                         break;
                     case Keys.A:
-                        player.Left -= 10;
-                        Game.ActiveForm.Update();
                         player.Image = Properties.Resources.walking_left;
+                        //NW Character from right
+                        if (player.Top <= 140 && player.Left - 10 <= 75)
+                            break;
+                        //SW Character from right
+                        if (player.Top >= 385 && player.Left - 10 <= 75)
+                            break;
+                        if (player.Left - 10 >= 0)
+                            player.Left -= 10;
                         break;
                     case Keys.S:
-                        player.Top += 10;
-                        Game.ActiveForm.Update();
                         player.Image = Properties.Resources.walking_forward;
+                        //SW Character from top
+                        if (player.Top + 10 >= 385 && player.Left <= 75)
+                            break;
+                        //SE Character from top
+                        if (player.Top + 10 >= 385 && player.Left >= 600)
+                            break;
+                        if (player.Bottom + 10 <= DisplayRectangle.Height - 100)
+                            player.Top += 10;
                         break;
                     case Keys.D:
-                        player.Left += 10;
-                        Game.ActiveForm.Update();
                         player.Image = Properties.Resources.walking_right;
+                        //NE Character from left
+                        if (player.Top <= 165 && player.Left + 10 >= 600)
+                            break;
+                        //SE Character from left
+                        if (player.Top >= 385 && player.Left + 10 >= 600)
+                            break;
+                        if (player.Right + 10 <= DisplayRectangle.Width)
+                            player.Left += 10;
                         break;
                 }
                 direction = e.KeyCode;
@@ -85,73 +112,96 @@ namespace BusinessEthicsGame
                 switch (e.KeyCode)
                 {
                     case Keys.W:
-                        player.Top -= 10;
+                        //NW Character from bottom
+                        if (player.Top - 10 <= 140 && player.Left <= 75)
+                            break;
+                        //NE Character from bottom
+                        if (player.Top - 10 <= 165 && player.Left >= 600)
+                            break;
+                        if (player.Top - 10 >= 0)
+                            player.Top -= 10;
                         break;
                     case Keys.A:
-                        player.Left -= 10;
-                        Game.ActiveForm.Update();
+                        //NW Character from right
+                        if (player.Top <= 140 && player.Left - 10 <= 75)
+                            break;
+                        //SW Character from right
+                        if (player.Top >= 385 && player.Left - 10 <= 75)
+                            break;
+                        if (player.Left - 10 >= 0)
+                            player.Left -= 10;
                         break;
                     case Keys.S:
-                        player.Top += 10;
-                        Game.ActiveForm.Update();
+                        //SW Character from top
+                        if (player.Top + 10 >= 385 && player.Left <= 75)
+                            break;
+                        //SE Character from top
+                        if (player.Top + 10 >= 385 && player.Left >= 600)
+                            break;
+                        if (player.Bottom + 10 <= DisplayRectangle.Height - 100)
+                            player.Top += 10;
                         break;
                     case Keys.D:
-                        player.Left += 10;
-                        Game.ActiveForm.Update();
+                        //NE Character from left
+                        if (player.Top <= 165 && player.Left + 10 >= 600)
+                            break;
+                        //SE Character from left
+                        if (player.Top >= 385 && player.Left + 10 >= 600)
+                            break;
+                        if (player.Right + 10 <= DisplayRectangle.Width)
+                            player.Left += 10;
                         break;
                 }
             }
+        }
+
+        public NPC getNPC()
+        {
+            if (player.Top <= 150 && player.Left <= 85)
+                return npcs[0];
+            else if (player.Top <= 175 && player.Left >= 590)
+                return npcs[1];
+            else if (player.Top >= 375 && player.Left <= 85)
+                return npcs[2];
+            else if (player.Top >= 375 && player.Left >= 590)
+                return npcs[3];
+            return null;
+        }
+
+        public void askQuestion(NPC npc)
+        {
+            posedQuestion.Text = String.Format(npc.questions[0].Item1, npc.name);
         }
     }
 
     public class NPC
     {
-        private int width, height;
-        private int timeSinceMoved;
-        private Random random;
+        public Tuple<String, int>[] questions = {
+            new Tuple<String, int>("{0} is walking by a pond and notices", 0),
+            //new Tuple<String, int>("", 0),
+            //new Tuple<String, int>("", 0),
+            //new Tuple<String, int>("", 0),
+            //new Tuple<String, int>("", 0),
+            //new Tuple<String, int>("", 0)};
+        };
+
+        public Tuple<String, String, String>[] answers = {
+            new Tuple<String, String, String>("", "", ""),
+            new Tuple<String, String, String>("", "", ""),
+            new Tuple<String, String, String>("", "", ""),
+            new Tuple<String, String, String>("", "", ""),
+            new Tuple<String, String, String>("", "", ""),
+            new Tuple<String, String, String>("", "", "")};
+
         public PictureBox image;
-
-        public NPC(Random rand, int w, int h)
+        public String name;
+        
+        public NPC(Bitmap b, int x, int y, String n)
         {
-            this.random = rand;
-            this.width = w;
-            this.height = h;
+            this.name = n;
             this.image = new PictureBox();
-            this.image.Image = Properties.Resources.White_square;
-            this.image.Location = new Point(random.Next(w-50), random.Next(h-50));
-            this.image.Size = new Size(50, 50);
-            this.timeSinceMoved = random.Next(2000, 6000);
+            this.image.Image = b;
+            this.image.Location = new Point(x, y);
         }
-
-        public void update()
-        {
-            timeSinceMoved -= 100;
-            if (timeSinceMoved <= 0)
-            {
-                makeMove();
-                timeSinceMoved = random.Next(2000, 6000);
-            }
-        }
-
-        public void makeMove()
-        {
-            int i = random.Next(4);
-            switch(i)
-            {
-                case 0: // Up
-                    image.Top -= 10;
-                    break;
-                case 1: //Down
-                    image.Top += 10;
-                    break;
-                case 2: // Left
-                    image.Left -= 10;
-                    break;
-                case 3: // Right
-                    image.Left += 10;
-                    break;
-            }
-        }
-
     }
 }

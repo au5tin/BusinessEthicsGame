@@ -1,0 +1,10 @@
+C:\Users\Austin\Desktop\Programming\BusinessEthicsGame\BusinessEthicsGame\BusinessEthicsGame\bin\Release\BusinessEthicsGame.exe.config
+C:\Users\Austin\Desktop\Programming\BusinessEthicsGame\BusinessEthicsGame\BusinessEthicsGame\bin\Release\BusinessEthicsGame.exe
+C:\Users\Austin\Desktop\Programming\BusinessEthicsGame\BusinessEthicsGame\BusinessEthicsGame\bin\Release\BusinessEthicsGame.pdb
+C:\Users\Austin\Desktop\Programming\BusinessEthicsGame\BusinessEthicsGame\BusinessEthicsGame\obj\Release\BusinessEthicsGame.helpForm.resources
+C:\Users\Austin\Desktop\Programming\BusinessEthicsGame\BusinessEthicsGame\BusinessEthicsGame\obj\Release\BusinessEthicsGame.Game.resources
+C:\Users\Austin\Desktop\Programming\BusinessEthicsGame\BusinessEthicsGame\BusinessEthicsGame\obj\Release\BusinessEthicsGame.Properties.Resources.resources
+C:\Users\Austin\Desktop\Programming\BusinessEthicsGame\BusinessEthicsGame\BusinessEthicsGame\obj\Release\BusinessEthicsGame.csproj.GenerateResource.cache
+C:\Users\Austin\Desktop\Programming\BusinessEthicsGame\BusinessEthicsGame\BusinessEthicsGame\obj\Release\BusinessEthicsGame.csproj.CoreCompileInputs.cache
+C:\Users\Austin\Desktop\Programming\BusinessEthicsGame\BusinessEthicsGame\BusinessEthicsGame\obj\Release\BusinessEthicsGame.exe
+C:\Users\Austin\Desktop\Programming\BusinessEthicsGame\BusinessEthicsGame\BusinessEthicsGame\obj\Release\BusinessEthicsGame.pdb
