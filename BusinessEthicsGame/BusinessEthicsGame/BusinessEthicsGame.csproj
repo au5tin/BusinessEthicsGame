@@ -135,6 +135,7 @@
     <None Include="Resources\heart.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\star.png" />
     <Content Include="stapler.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

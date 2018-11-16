@@ -16,6 +16,31 @@ namespace BusinessEthicsGame
         public NPC[] npcs = new NPC[4];
         public Keys direction = Keys.Sleep;
         public Random rand = new Random();
+        public const int numQuestions = 5;
+        public int healthScore = 10;
+        public int pointScore = 0;
+        public int num = 0;
+
+        public Tuple<String, int, int, int>[] questions = {
+            new Tuple<String, int, int, int>("{0} is walking by a pond and notices their child and 2 stranger's children\n" +
+                                   "drowning.  If {0} was a Utilitarian, what should they do?", 1, 2, -2),
+            new Tuple<String, int, int, int>("{0} is the manager of a company branch.  One of their long time co-workers\n" +
+                                   " is getting old and is starting to cost the business extra money.  What\n" +
+                                   "should {0} do in this situation?", 1, -2, 2),
+            new Tuple<String, int, int, int>("{0} is working at a company and accidentally stumbles upon some files\n" +
+                                             "showing that the company is possibly stealing millions of dollars a year.\n" +
+                                             "What is the best course of action for {0}?", -2,2,1),
+            new Tuple<String, int, int, int>("", 2,1,-2),
+            new Tuple<String, int, int, int>("", 1,2,-2)
+        };
+
+        public Tuple<String, String, String>[] answers = {
+            new Tuple<String, String, String>("Save Their Child", "Save Stranger's Children", "Ignore the Situation"),
+            new Tuple<String, String, String>("Talk With Them to Clarify Issue", "Continue With Employment", "Let Them Go"),
+            new Tuple<String, String, String>("Help and Make Money", "Follow Chain of Command", "Whistle-Blow"),
+            new Tuple<String, String, String>("", "", ""),
+            new Tuple<String, String, String>("", "", "")
+        };
 
         public Game()
         {
@@ -53,8 +78,9 @@ namespace BusinessEthicsGame
                 popup.Show();
             }
             //E for Interaction
-            else if (e.KeyCode == Keys.E && getNPC() != null)
+            else if (e.KeyCode == Keys.E && getNPC() != null && posedQuestion.Text == "")
             {
+                panel1.Focus();
                 askQuestion(getNPC());
             }
             else if (direction != e.KeyCode)
@@ -171,30 +197,104 @@ namespace BusinessEthicsGame
 
         public void askQuestion(NPC npc)
         {
-            int r = rand.Next(0, 2);
-            posedQuestion.Text = String.Format(npc.questions[r].Item1, npc.name);
+            int r = num % numQuestions;
+            posedQuestion.Text = String.Format(questions[r].Item1, npc.name);
+            button1.Enabled = button2.Enabled = button3.Enabled = true;
+            button1.Text = answers[r].Item1;
+            button2.Text = answers[r].Item2;
+            button3.Text = answers[r].Item3;
+        }
+
+        private void onButton1Click(object sender, MouseEventArgs e)
+        {
+            if (questions[num % numQuestions].Item2 > 0)
+            {
+                pointScore += questions[num % numQuestions].Item2;
+                if (pointScore > 10)
+                    pointScore = 10;
+                score.Text = pointScore + "/10";
+            }
+            else
+            {
+                healthScore += questions[num % numQuestions].Item2;
+                if (healthScore < 0)
+                    healthScore = 0;
+                health.Text = healthScore + "/10";
+            }
+            resetStuff();
+            checkState();
+        }
+
+        private void onButton2Click(object sender, MouseEventArgs e)
+        {
+            if (questions[num % numQuestions].Item3 > 0)
+            {
+                pointScore += questions[num % numQuestions].Item3;
+                if (pointScore > 10)
+                    pointScore = 10;
+                score.Text = pointScore + "/10";
+            }
+            else
+            {
+                healthScore += questions[num % numQuestions].Item3;
+                if (healthScore < 0)
+                    healthScore = 0;
+                health.Text = healthScore + "/10";
+            }
+            resetStuff();
+            checkState();
+        }
+
+        private void onButton3Click(object sender, MouseEventArgs e)
+        {
+            if (questions[num % numQuestions].Item4 > 0)
+            {
+                pointScore += questions[num % numQuestions].Item4;
+                if (pointScore > 10)
+                    pointScore = 10;
+                score.Text = pointScore + "/10";
+            }
+            else
+            {
+                healthScore += questions[num % numQuestions].Item4;
+                if (healthScore < 0)
+                    healthScore = 0;
+                health.Text = healthScore + "/10";
+            }
+            resetStuff();
+            checkState();
+        }
+
+        public void checkState()
+        {
+            if (healthScore == 0)
+            {
+                WinLose.ForeColor = Color.Red;
+                WinLose.Text = "You Lose";
+                WinLose.Focus();
+            }
+            else if (pointScore == 10)
+            {
+                WinLose.ForeColor = Color.Yellow;
+                WinLose.Text = "You Won!";
+                WinLose.Focus();
+            }
+        }
+
+        public void resetStuff()
+        {
+            num++;
+            button1.Enabled = button2.Enabled = button3.Enabled = false;
+            button1.Text = "Option 1";
+            button2.Text = "Option 2";
+            button3.Text = "Option 3";
+            posedQuestion.Text = "";
+            ActiveForm.Focus();
         }
     }
 
     public class NPC
     {
-        public Tuple<String, int>[] questions = {
-            new Tuple<String, int>("{0} is walking by a pond and notices a child drowing", 0),
-            new Tuple<String, int>("{0} was talking to Lynda and noticed something strange", 0)
-            //new Tuple<String, int>("", 0),
-            //new Tuple<String, int>("", 0),
-            //new Tuple<String, int>("", 0),
-            //new Tuple<String, int>("", 0)
-        };
-
-        public Tuple<String, String, String>[] answers = {
-            new Tuple<String, String, String>("Save", "Call", "Ignore"),
-            new Tuple<String, String, String>("Really?", "How?", "Yeet") };
-            //new Tuple<String, String, String>("", "", ""),
-            //new Tuple<String, String, String>("", "", ""),
-            //new Tuple<String, String, String>("", "", ""),
-            //new Tuple<String, String, String>("", "", "")};
-
         public PictureBox image;
         public String name;
         
