@@ -30,16 +30,19 @@ namespace BusinessEthicsGame
             new Tuple<String, int, int, int>("{0} is working at a company and accidentally stumbles upon some files\n" +
                                              "showing that the company is possibly stealing millions of dollars a year.\n" +
                                              "What is the best course of action for {0}?", -2,2,1),
-            new Tuple<String, int, int, int>("", 2,1,-2),
-            new Tuple<String, int, int, int>("", 1,2,-2)
+            new Tuple<String, int, int, int>("{0} came upon a train track lever and saw 4 workers on one track and a\n" +
+                                             "single worker on the other track.  A train is coming and the track is\n" +
+                                             "currently set to the 4 workers. What should {0} do?", 2,1,-2),
+            new Tuple<String, int, int, int>("{0} is poor and starving.  They have 2 young children and need to get food\n" +
+                                             "to survive.  What should they do that would be permissible?", 1,2,-2)
         };
 
         public Tuple<String, String, String>[] answers = {
             new Tuple<String, String, String>("Save Their Child", "Save Stranger's Children", "Ignore the Situation"),
             new Tuple<String, String, String>("Talk With Them to Clarify Issue", "Continue With Employment", "Let Them Go"),
             new Tuple<String, String, String>("Help and Make Money", "Follow Chain of Command", "Whistle-Blow"),
-            new Tuple<String, String, String>("", "", ""),
-            new Tuple<String, String, String>("", "", "")
+            new Tuple<String, String, String>("Defer the Train to 1 Worker", "Ignore So You Weren't Involved", "Let the Train hit the 4 Workers"),
+            new Tuple<String, String, String>("Beg", "Steal", "Kill")
         };
 
         public Game()

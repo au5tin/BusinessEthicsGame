@@ -96,9 +96,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\White_square.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\default.png" />
   </ItemGroup>
   <ItemGroup>
@@ -127,9 +124,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\idle4.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\heart.jpg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\heart.png" />
